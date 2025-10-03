@@ -15,7 +15,10 @@ class MoviesController < ApplicationController
       else
         @all_ratings
       end
+    
+    @sort_by = params[:sort_by].presence_in(%w[title release_date])
     @movies = Movie.with_ratings(@ratings_to_show)
+    @movies = @movies.order(@sort_by => :asc) if @sort_by
   end
 
   def new

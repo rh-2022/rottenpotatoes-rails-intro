@@ -11,6 +11,12 @@
         <%= label_tag "ratings_#{rating}", rating, class: "form-check-label" %>
       </span>
     <% end %>
+    <label class="form-label me-2" for="sort_by">Sort by:</label>
+    <%= select_tag :sort_by, 
+          options_for_select([["Title","title"],["Release date","release_date"]], @sort_by),
+          id: "sort_by",
+          class: "form-select d-inline w-auto" %>
+
     <%= submit_tag 'Refresh', id: 'ratings_submit', class: 'btn btn-primary' %>
   </p>
 <% end %>
